@@ -2,22 +2,53 @@
 //
 
 #include <iostream>
+#include <vector>
 using namespace std;
+
+// A vertex
+struct vertex {
+	int id;
+};
+
+// An edge links two vertices
+struct edge {
+	int v1;
+	int v2;
+};
+
+// Representation of a graph as a collection of vertices and edges.
+class Graph {
+public:
+	vector<vertex> vertices;
+	vector<edge> edges;
+
+	// Constructor
+	Graph() {}
+
+	// Add a vertex to the list of vertices
+	void addVertex(vertex v) {
+		vertices.push_back(v);
+	}
+
+	void printVertices() {
+		cout << "Vertices: \n";
+		for (int i = 0; i < vertices.size(); i++) {
+			cout << vertices.at(i).id << '\n';
+		}
+	}
+};
 
 int main()
 {
-    string number;
-    cin >> number;
-    cout << "Your number is: " + number;
+	Graph g;
+	
+	for (int i = 0; i < 10; i++) {
+		vertex v;
+		v.id = i;
+		g.addVertex(v);
+	}
+
+	g.printVertices();
+
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
